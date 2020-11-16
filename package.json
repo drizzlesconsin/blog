@@ -1,0 +1,16 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Deno + React markdown blog",
+  "main": "pagic.config.tsx",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "pagic build --watch --serve",
+    "build": "pagic build",
+    "deploy:vercel": "sh deploy-vercel.sh"
+  },
+  "keywords": [],
+  "author": "drizzlesconsin",
+  "license": "MIT"
+}
