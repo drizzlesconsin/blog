@@ -62,6 +62,6 @@ $ sudo dscacheutil -flushcache
 - Strong protections against server failure
 - A new preference for users to opt out of these security protections
 
-## REF
+## References
 
 + https://www.v2ex.com/t/725369?p=1

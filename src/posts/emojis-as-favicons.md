@@ -20,7 +20,7 @@ Firefox 是最先支持该图标的浏览器，Chrome 80+ 开始支持。
 
 [caniuse#icon-svg](https://caniuse.com/#feat=link-icon-svg)
 
-## REF
+## References
 
 + [Twitter-LeaVerou](https://twitter.com/LeaVerou/status/1241619866475474946?s=20)
 + [Emojis as Favicons](https://css-tricks.com/emojis-as-favicons/)

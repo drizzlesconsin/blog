@@ -100,6 +100,6 @@ String.fromCodePoint(128020)
 
 通过笔记整理，了解到了更多字符编码的基础细节。
 
-## REF
+## References
 
 + https://github.com/akira-cn/FE_You_dont_know/issues/4
