@@ -1,7 +1,7 @@
-import { React } from 'https://deno.land/x/pagic/mod.ts';
+import { React } from "https://deno.land/x/pagic/mod.ts";
 
 export default {
-  srcDir: 'src',
+  srcDir: "src",
   title: "Drizzle's Blog",
   theme: "blog",
   plugins: ["blog"],
@@ -19,32 +19,32 @@ export default {
     {
       text: "Home",
       link: "/",
-      icon: 'czs-home-l'
+      icon: "czs-home-l",
     },
     {
       text: "Tags",
       link: "/tags/",
-      icon: 'czs-tag-l'
+      icon: "czs-tag-l",
     },
     {
       text: "Archives",
       link: "/archives/",
-      icon: 'czs-category-l'
+      icon: "czs-category-l",
     },
     {
       text: "About",
       link: "https://github.com/drizzlesconsin",
       target: "_blank",
-      icon: 'czs-about-l'
+      icon: "czs-about-l",
     },
   ],
   blog: {
     isPost: true,
-    root: '/posts/',
+    root: "/posts/",
     social: {
-      github: 'https://github.com/drizzlesconsin',
-      email: '#',
-      twitter: '#',
-    }
+      github: "drizzlesconsin",
+      email: "#",
+      twitter: "#",
+    },
   },
 };
