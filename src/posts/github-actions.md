@@ -26,7 +26,7 @@ workflow 由一个或多个 jobs 构成，一次持续集成的运行作业，�
 
 ### steps
 
-jobs 包含一系列任务，按步骤可以运行命令、运行设置任务的操作。 
+jobs 包含一系列任务，按步骤可以运行命令、运行设置任务的操作。
 
 ### action
 
@@ -49,30 +49,30 @@ name: Deployment
 # master 分支发生 push, pull_request 事件才会触发 workflow
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 # workflow 文件的主体是 jobs 字段
 jobs:
   build:
-    # 指定构建服务器 
+    # 指定构建服务器
     runs-on: ubuntu-latest
 
     steps:
-    # 选择一个 action, 拉取代码
-    - uses: actions/checkout@v2
+      # 选择一个 action, 拉取代码
+      - uses: actions/checkout@v2
 
-    # 指定操作步骤的名称
-    - name: Run a one-line script
-      # 执行该步骤的所需的环境变量 npm install | npm run build
-      run: echo Hello, world!
+      # 指定操作步骤的名称
+      - name: Run a one-line script
+        # 执行该步骤的所需的环境变量 npm install | npm run build
+        run: echo Hello, world!
 
-    # 可以执行多个
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+      # 可以执行多个
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
 ```
 
 ## 配置
@@ -140,23 +140,23 @@ schedule 语法有五个字段，用空格分隔，每个字段代表一个时�
 │ │ ┌───────────── day of the month (1 - 31)
 │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
 │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
-│ │ │ │ │                                   
+│ │ │ │ │
 │ │ │ │ │
 │ │ │ │ │
 * * * * *
 ```
 
-- `*` 任意值 * * * * * 在每天的每分钟运行。
+- `*` 任意值 \* \* \* \* \* 在每天的每分钟运行。
 - `,` 值列表分隔符 `2,10 4,5 * * *` 在每天第 4 和第 5 小时的第 2 和第 10 分钟运行。
 - `-` 值的范围 `0 4-6 * * *` 在第 4、5、6 小时的第 0 分钟运行。
-- `/` 步骤值 20/15 * * * * 从第 20 分钟到第 59 分钟每隔 15 分钟运行（第 20、35 和 50 分钟）。
+- `/` 步骤值 20/15 \* \* \* \* 从第 20 分钟到第 59 分钟每隔 15 分钟运行（第 20、35 和 50 分钟）。
 
 ## 添加工作流状态徽标
 
-状态徽章显示工作流程目前失败还是通过。 添加状态徽章的常见位置是仓库的 README.md 文件。 徽章显示默认分支（通常是 `main`）的状态。 
+状态徽章显示工作流程目前失败还是通过。 添加状态徽章的常见位置是仓库的 README.md 文件。 徽章显示默认分支（通常是 `main`）的状态。
 
 ```markdown
-![](https://github.com/actions/hello-world/workflows/Greet%20Everyone/badge.svg)
+![](https://docs.github.com/assets/cb-6722/images/help/repository/actions-workflow-status-badge.png)
 ```
 
 ## 自动部署到阿里云 OSS 的例子
@@ -172,7 +172,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     # 配置构建矩阵
@@ -181,38 +180,38 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    # 使用 yarn 安装依赖、编译
-    - name: Install
-      uses: CultureHQ/actions-yarn@master
-      with:
-        args: install
+      # 使用 yarn 安装依赖、编译
+      - name: Install
+        uses: CultureHQ/actions-yarn@master
+        with:
+          args: install
 
-    - name: Build
-      uses: CultureHQ/actions-yarn@master
-      with:
-        args: build
+      - name: Build
+        uses: CultureHQ/actions-yarn@master
+        with:
+          args: build
 
-    # 读取项目 package.json 的版本号 ${{ env.PACKAGE_VERSION }}
-    - name: Read project version
-      uses: nyaascii/package-version@v1
+      # 读取项目 package.json 的版本号 ${{ env.PACKAGE_VERSION }}
+      - name: Read project version
+        uses: nyaascii/package-version@v1
 
-    # 使用阿里云 OSS 命令行工具
-    - name: Setup aliyun oss
-      uses: manyuanrong/setup-ossutil@master
-      with:
-        # 填写 Bucket 所在地域的域名信息，可参考访问域名和数据中心。
-        endpoint: 'oss-cn-region.aliyuncs.com'
-        # AccessKey
-        access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
-        # AccessKey Secret
-        access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
-    - run: ossutil cp -r -f dist oss://:path/${{ env.PACKAGE_VERSION }}
+      # 使用阿里云 OSS 命令行工具
+      - name: Setup aliyun oss
+        uses: manyuanrong/setup-ossutil@master
+        with:
+          # 填写 Bucket 所在地域的域名信息，可参考访问域名和数据中心。
+          endpoint: "oss-cn-region.aliyuncs.com"
+          # AccessKey
+          access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
+          # AccessKey Secret
+          access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+      - run: ossutil cp -r -f dist oss://:path/${{ env.PACKAGE_VERSION }}
 ```
 
 ### 如何获取 AccessKey ID 和 AccessKey Secret
@@ -223,7 +222,7 @@ https://help.aliyun.com/knowledge_detail/38738.html
 
 1. 在 GitHub repo 上依次点击 `Settings` -> `Secrets` 设置 `secret`.
 
-2. 配置好 `OSS_ACCESS_KEY_ID` `OSS_ACCESS_KEY_SECRET`   加密密码之后，就可以使用 `secrets` 上下文访问创建的密码。
+2. 配置好 `OSS_ACCESS_KEY_ID` `OSS_ACCESS_KEY_SECRET` 加密密码之后，就可以使用 `secrets` 上下文访问创建的密码。
 
 ```yml
 access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
@@ -232,8 +231,8 @@ access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
 
 ### ossutil
 
-+ `-r` 上传文件夹
-+ `-f ` 强制操作 (当上传的文件已存在，则会强制覆盖上传)
+- `-r` 上传文件夹
+- `-f ` 强制操作 (当上传的文件已存在，则会强制覆盖上传)
 
 ```bash
 ossutil cp -r -f dist oss://:path/dir
@@ -246,9 +245,9 @@ ossutil cp -r -f dist oss://:path/dir
   run: echo ${{ github.actor }}: ${{ github.event.head_commit.message }}
 ```
 
-+ `github.actor` 获取运行工作流的用户登录名
-+ `github.event.head_commit.message` 提交记录的消息 Commit Message
-+ `github.event.head_commit.author.username` 提交记录的开发者用户名
+- `github.actor` 获取运行工作流的用户登录名
+- `github.event.head_commit.message` 提交记录的消息 Commit Message
+- `github.event.head_commit.author.username` 提交记录的开发者用户名
 
 还有其它属性，可以通过 `toJson(github)` 打印出来，[字段说明文档](https://docs.github.com/en/developers/webhooks-and-events/webhook-events-and-payloads)。
 
@@ -263,7 +262,6 @@ ossutil cp -r -f dist oss://:path/dir
 
 ## References
 
-+ https://docs.github.com/en/actions
-+ [GitHub Actions 入门教程](http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
-+ [How to set up GitHub workflows and create GitHub Actions using Docker](https://medium.com/sysf/how-to-set-up-github-workflows-and-create-github-actions-using-docker-3a5ba7ec0988)
-
+- https://docs.github.com/en/actions
+- [GitHub Actions 入门教程](http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)
+- [How to set up GitHub workflows and create GitHub Actions using Docker](https://medium.com/sysf/how-to-set-up-github-workflows-and-create-github-actions-using-docker-3a5ba7ec0988)

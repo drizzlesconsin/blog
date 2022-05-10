@@ -46,7 +46,7 @@ $ keytool -genkeypair -v -keystore xxx-key.keystore -alias xxx-keystore -keyalg 
 1. 将 `xxx-key.keystore` 文件移动到项目 `android\app` 文件夹下。
 2. 打开 `android\gradle.properties` 文件，配置 gradle 变量。
 
-```bash
+```xml
 MYAPP_RELEASE_STORE_FILE=xxx-key.keystore
 MYAPP_RELEASE_KEY_ALIAS=xxx-alias
 MYAPP_RELEASE_STORE_PASSWORD=******
