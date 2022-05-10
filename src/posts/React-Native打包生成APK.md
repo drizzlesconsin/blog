@@ -22,7 +22,7 @@ npm: 6.4.1
 进入 `bin` 目录
 
 ```bash
-$ cd C:\Program Files\Java\jdk1.8.0_211\bin
+$ cd C:/Program Files/Java/jdk1.8.0_211/bin
 ```
 
 执行以下命令
@@ -31,12 +31,11 @@ $ cd C:\Program Files\Java\jdk1.8.0_211\bin
 $ keytool -genkeypair -v -keystore xxx-key.keystore -alias xxx-keystore -keyalg RSA -validity 10000 -keysize 2048
 ```
 
-+ `-genkeypair` 生成的文件
-+ `-alias xxx-keystore` 生成的 keystore 别名
-+ `-keyalg RSA`  加密和数字签名的算法
-+ `-validity 10000` 有效天数
-+ `-keysize 2048` 密钥长度
-
+- `-genkeypair` 生成的文件
+- `-alias xxx-keystore` 生成的 keystore 别名
+- `-keyalg RSA` 加密和数字签名的算法
+- `-validity 10000` 有效天数
+- `-keysize 2048` 密钥长度
 
 执行后，需要输入密钥库和对应密钥的密码，名字、组织、国家等信息，直接回车快速完成。
 
@@ -47,7 +46,7 @@ $ keytool -genkeypair -v -keystore xxx-key.keystore -alias xxx-keystore -keyalg 
 1. 将 `xxx-key.keystore` 文件移动到项目 `android\app` 文件夹下。
 2. 打开 `android\gradle.properties` 文件，配置 gradle 变量。
 
-```properties
+```bash
 MYAPP_RELEASE_STORE_FILE=xxx-key.keystore
 MYAPP_RELEASE_KEY_ALIAS=xxx-alias
 MYAPP_RELEASE_STORE_PASSWORD=******
@@ -64,6 +63,6 @@ $ cd android && ./gradlew assembleRelease
 
 ## REF
 
-+ [Android APP-Signing-Manually](https://developer.android.com/studio/publish/app-signing#signing-manually)
-+ [Android Variant_API](https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html#variant_api)
-+ [Oracle Docs keytool](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html#CHDFFCBG)
+- [Android APP-Signing-Manually](https://developer.android.com/studio/publish/app-signing#signing-manually)
+- [Android Variant_API](https://developer.android.com/studio/build/gradle-plugin-3-0-0-migration.html#variant_api)
+- [Oracle Docs keytool](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html#CHDFFCBG)
