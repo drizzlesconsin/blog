@@ -1,7 +1,7 @@
 ---
 author: drizzle
 date: 2020-06-13
-tags: [Automatic]
+tags: [automate]
 ---
 
 # GitHub Actions 入门及自动化部署实践

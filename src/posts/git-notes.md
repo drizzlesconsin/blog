@@ -1,7 +1,7 @@
 ---
 author: drizzle
 date: 2019-06-20
-tags: [Git]
+tags: [git]
 ---
 
 # Git 不常用的命令
@@ -72,7 +72,7 @@ error: commit xb1b345 is a merge but no -m option was given.
 fatal: revert failed
 ```
 
-如果提交 `[commit_id]` 是 merge 节点 (遇到的就是这种情况*)，则会报上面的错，还原失败。
+如果提交 `[commit_id]` 是 merge 节点 (遇到的就是这种情况\*)，则会报上面的错，还原失败。
 
 解决这个麻烦，需要指定具体的提交节点。加上 `-m` 选项，后面加上序号 `2 parents xb1b345 + 2345342`
 

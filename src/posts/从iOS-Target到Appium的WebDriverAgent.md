@@ -1,7 +1,7 @@
 ---
 author: drizzle
 date: 2022-02-15
-tags: [Automatic]
+tags: [automate]
 ---
 
 # 从 iOS-Target 到 Appium 的 WebDriverAgent
@@ -50,9 +50,9 @@ tidevice xctest -B com.gameappium.WebDriverAgentRunner.xctrunner
 
 在 AirtestIDE 可以通过两种地址连接
 
-+ **推荐**:  `http+usbmux://[DeviceIdentifier]`  DeviceIdentifier 在上面的命令执行后会打印出来。
+- **推荐**: `http+usbmux://[DeviceIdentifier]` DeviceIdentifier 在上面的命令执行后会打印出来。
 
-+ **麻烦**: `http://locahost:8100/` 需要再开个窗口执行 ` tidevice relay 8100 8100` 才可以连接。
+- **麻烦**: `http://locahost:8100/` 需要再开个窗口执行 ` tidevice relay 8100 8100` 才可以连接。
 
 2. 通过 wdaproxy 启动
 
@@ -66,7 +66,7 @@ tidevice wdaproxy -B com.gameappium.WebDriverAgentRunner.xctrunner --port 8200
 
 通过 Xcode 编译打开 `ServerURLHere->http://192.168.0.100:8100<-ServerURLHere` 访问地址
 
-此时的 `sessionId`  会为 `null`
+此时的 `sessionId` 会为 `null`
 
 需要通过 iproxy 映射端口后，才能正常显示。
 

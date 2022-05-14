@@ -2,6 +2,7 @@
 author: drizzle
 date: 2019-06-25
 tags: [react-native]
+cover: https://images.unsplash.com/photo-1561736778-92e52a7769ef
 ---
 
 # React-Native 开发碰到的问题汇总
@@ -20,7 +21,7 @@ react-native: 0.58.5
 
 ## 执行 `react-native info` 无法显示 Xcode 版本号
 
-> `IDEs: Xcode: /undefined - /usr/bin/xcodebuild` 版本号显示 `undefined`
+> `IDEs: Xcode: /undefined - /usr/bin/xcodebuild`  版本号显示 `undefined`
 
 **解决：**执行 `sudo xcode-select -s /Applications/Xcode.app`
 
@@ -34,7 +35,6 @@ react-native: 0.58.5
 2. `sudo xcodebuild -license` 同意 iOS 许可
 3. 在 Xcode 中，选中 `main.jsbundle` 文件，在右侧 Target Membership 勾选项目
 4. `npm install && react-native run-ios`
-
 
 以上方法对我的环境均无效。
 

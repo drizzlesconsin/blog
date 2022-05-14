@@ -1,7 +1,8 @@
 ---
 author: drizzle
 date: 2022-05-14
-tags: [Xcode]
+tags: [xcode]
+typora-root-url: ..
 ---
 
 # [Solved] Xcode: add "fetch" to the list of your supported UIBackgroundModes in your Info.plist
@@ -17,6 +18,6 @@ xx[123:345] You've implemented -[<UIApplicationDelegate> application:didReceiveR
 
 TARGETS -> Singing & Capabilities -> `+ Capabilities` -> Find Background Modes, 勾选 Background fetch 后台获取，Remote notifications 远程推送通知。
 
-![xcode-singing-capabilities-background-modes](./assets/xcode-singing-capabilities-background-modes.png)
+![xcode-singing-capabilities-background-modes](/assets/xcode-singing-capabilities-background-modes.png)
 
 Xcode 的东西必须碰一次记一次。

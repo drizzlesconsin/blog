@@ -1,7 +1,7 @@
 ---
 author: drizzle
 date: 2020-11-16
-tags: [Note]
+tags: [note]
 ---
 
 # Apple OCSP
@@ -10,8 +10,8 @@ tags: [Note]
 
 看了相关文章
 
-+ https://blog.jacopo.io/en/post/apple-ocsp/
-+ https://blog.cryptohack.org/macos-ocsp-disaster
+- https://blog.jacopo.io/en/post/apple-ocsp/
+- https://blog.cryptohack.org/macos-ocsp-disaster
 
 主要是因为 OCSP 走的是不加密的 HTTP。*别人*会知道你在 macOS 上运行了什么程序。
 
@@ -50,9 +50,9 @@ $ sudo dscacheutil -flushcache
 
 ...有大佬抓包分析请求，[验证](https://gist.github.com/quake/b927122dad5bb7a78dac6fc527bcf888)了几个应用，以下建议：
 
-+ 不要使用编译好的 macOS 应用（大部分都是使用开发者证书签名）
-+ 自行拉源码编译
-+ 移除签名运行应用 `codesign --remove-signature /Applications/APP_NAME.app`
+- 不要使用编译好的 macOS 应用（大部分都是使用开发者证书签名）
+- 自行拉源码编译
+- 移除签名运行应用 `codesign --remove-signature /Applications/APP_NAME.app`
 
 ## Apple adds “privacy protections” section
 
@@ -64,4 +64,4 @@ $ sudo dscacheutil -flushcache
 
 ## References
 
-+ https://www.v2ex.com/t/725369?p=1
+- https://www.v2ex.com/t/725369?p=1
