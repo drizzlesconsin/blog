@@ -6,7 +6,7 @@ cover: https://images.unsplash.com/photo-1603515161074-3206aaeb03f2
 typora-root-url: ..
 ---
 
-# React-Native 打包 IPA 文件全流程(Ad-Hoc)
+# React-Native 打包 IPA 文件全流程 (Ad-Hoc)
 
 ## Environment
 
