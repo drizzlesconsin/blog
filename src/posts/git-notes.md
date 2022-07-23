@@ -2,6 +2,7 @@
 author: drizzle
 date: 2019-06-20
 tags: [git]
+cover: https://images.unsplash.com/photo-1618401479427-c8ef9465fbe1
 ---
 
 # Git 不常用的命令
