@@ -1,6 +1,6 @@
 ---
 author: drizzle
-date: 2022-07-13
+date: 2025-03-05
 tags: [tauri]
 cover: https://images.unsplash.com/photo-1633419461186-7d40a38105ec
 ---
@@ -50,13 +50,25 @@ $ pnpm add @tauri-apps/api
 
 ## 创建 Rust 项目配置
 
+1. 在 1.0 版本基础上升级，添加 `--force` 参数
+2. dev server 需要填写 IP+PORT，不能用 localhost
+
 ```bash 
-$ pnpm tauri init
+$ pnpm tauri init --force
+
+✔ What is your app name? · XXX平台
+✔ What should the window title be? · XX应用名
+✔ Where are your web assets (HTML/CSS/JS) located, relative to the "<current dir>/src-tauri/tauri.conf.json" file that will be created? · ../dist
+✔ What is the url of your dev server? · http://localhost:8000
+✔ What is your frontend dev command? · pnpm dev
+✔ What is your frontend build command? · pnpm build
 ```
 
-初始化需要配置一些基本信息，一路回车后可到 `src-tauri/tauri.conf.json` 修改。**注意打包前需要修改 `bundle.identifier` 应用的包名。**
+初始化需要配置一些基本信息，一路回车后可到 `src-tauri/tauri.conf.json` 修改。
+**注意打包前需要修改 `bundle.identifier` 应用的包名。**
 
-```js 
+```js
+// 1.0 tauri.config.json
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
@@ -72,7 +84,7 @@ $ pnpm tauri init
   },
   "package": {
     // 打包的执行文件名、第一项菜单显示的名称、关于里面显示的名称
-    "productName": "XXX 桌面版",
+    "productName": "XXX桌面版",
     // 菜单—关于，里面显示的版本号
     "version": "0.1.0"
   },
@@ -90,10 +102,46 @@ $ pnpm tauri init
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "XXX 桌面版",
+        "title": "XXX桌面版",
         "width": 800
       }
     ]
+  }
+}
+```
+
+```js
+// tauri.config.json 2.0
+
+{
+  "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
+  "productName": "XXX桌面版",
+  "version": "0.1.0",
+  "identifier": "com.tauri.dev",
+  "build": {
+    "frontendDist": "../dist",
+    "devUrl": "http://192.168.1.26:8000",
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "XXX桌面版",
+        "width": 1440,
+        "height": 900,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
   }
 }
 ```
