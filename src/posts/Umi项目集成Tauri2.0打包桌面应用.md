@@ -30,7 +30,7 @@ Tauri 是个跨平台 GUI 框架，前端调用系统自带的 WebView，后端�
 ## 环境版本
 
 ```json
-umi: "^4.0.8"
+umi: "^4.4.5"
 rustc 1.62.1
 ```
 
@@ -176,40 +176,99 @@ Tauri 目前还[不支持跨平台打包](https://tauri.app/zh/v1/guides/buildin
 - 打包输出的安装包位置： `src-tauri/target/release/bundle`.
 - debug 版本：`src-tauri/target/debug`.
 
-### 修改窗口大小填满屏幕
+### 打开应用默认填满屏幕
 
-```diff
-// tauri.conf.json
-"windows": [
-  {
-    "fullscreen": false,
--    "height": 600,
-    "resizable": true,
-     // 标题栏显示的文本
-    "title": "ABCD 桌面版",
--   "width": 800,
-+   "maximized": true
+```js
+// src-tauri/tauri.conf.json
+{
+  app: {
+    windows: [{ maximized: true }];
   }
-]
+}
 ```
 
-### 更新图标
+### 隐藏标题栏并覆盖窗口控件
+
+为了实现窗口控件（如最小化、最大化和关闭按钮）覆盖在内容上，并隐藏默认的标题栏，可以在 Tauri 配置文件中进行如下设置：
+
+```js
+// src-tauri/tauri.conf.json
+{
+  app: {
+    windows: [
+      {
+        decorations: true,
+        hiddenTitle: true,
+        titleBarStyle: "Overlay",
+      },
+    ];
+  }
+}
+```
+
+### 系统面板设置为中文
+
+```xml
+<!-- src-tauri/Info.plist -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>Chinese</string>
+</dict>
+</plist>
+```
+
+### 自定义窗口最小化、最大化、圆角
+
+> REF: https://github.com/tauri-apps/tauri/issues/9287
+
+```js
+// tauri.conf.json
+{
+  "app": {
+    "macOSPrivateApi": true,
+    "windows": [
+      {
+        "transparent": true,
+        "decorations": false,
+      }
+    ]
+  }
+}
+```
+
+```css
+/* global.less|css */
+#root {
+  border-radius: 10px;
+  overflow: hidden;
+  background: transparent;
+}
+```
+
+### 更新应用图标
 
 > 推荐的图标尺寸为 1240x1240，是为了更好的适配 Windows 平台。
 >
 > 如果发现在 macOS 启动台或者 Dock 的图标偏大，图标四周需要一定留白。
 
+**参考：**
+
 - [Tauri Icon 命令](https://tauri.app/v1/guides/features/icons/)
 - [图标工厂](https://icon.wuruihong.com/icon)
+- [tauri/discussions/10999](https://github.com/tauri-apps/tauri/discussions/10999)
+- [Tauri 开发中，使用 node 将 png 图片转成苹果的 icns 图标格式](https://juejin.cn/post/7436221709847724071)
 
 Tauri 非常贴心的提供了一个 tauricon 指令。准备一张 1240x1240 大小的 `app-icon.png` 图片或者 svg 放到项目根目录。
 
 ```bash
 # 不带路径默认在根目录查找
-$ npx @tauri-apps/tauricon
+$ pnpm tauri icon
 
 # 指定图标路径
-$ npx @tauri-apps/tauricon ./public/app-icon.png
+$ pnpm tauri icon ./app-icon.png
 ```
 
 其它问题后续补充，Enjoy! 🎉

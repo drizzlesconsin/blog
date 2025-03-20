@@ -92,3 +92,44 @@ $ git commit -m '...'
 
 $ git push origin master -f
 ```
+
+## 项目同时推送到多个远程地址
+
+### 添加多个
+
+在你的本地项目目录中，添加 GitHub 仓库作为新的远程仓库：
+
+```bash
+# 查看当前远程仓库
+git remote -v
+
+# 添加 GitHub 作为名为 github 的远程仓库
+git remote add github https://github.com/用户名/仓库名.git
+```
+
+### 推送
+
+分别推送
+
+```bash
+# 推送到 Gitee (假设远程名称为 origin)
+git push origin 分支名
+
+# 推送到 GitHub
+git push github 分支名
+```
+
+同时推送
+
+```bash
+# 编辑 .git/config 文件
+git config -e
+```
+
+在 [remote "origin"] 部分添加 GitHub 的 URL：
+
+```bash
+[remote "origin"]
+    url = https://a.com/用户名/仓库名.git
+    url = https://b.com/用户名/仓库名.git
+```
